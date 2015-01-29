@@ -17,17 +17,28 @@ var defaults = {
     }
 };
 function errorBaseRequest(uri, options, errorObj, callback) {
-    this.defaults = defaults;
-    this.baseRequest = request.defaults({});
+    var defaults = {
+            requestOptions: {
+                headers: {
+                    "Accept": "JSON",
+                    "Content-Type": "application/json"
+                }, json: true
+            },
+            errorCodeField: "errorCode",
+            generalErrorHandler: function (response, body, next) {
+                next();
+            }
+        },
+        baseRequest = request.defaults({});
     var self = this;
 
-    return this.baseRequest(uri, options,
+    return baseRequest(uri, options,
         function (err, response, body) {
             if (err) return callback(err);
             async.series([function (next) {
-                self.generalErrorHandler(response, body, next);
+                self.defaults.generalErrorHandler(response, body, next);
             }, function (next) {
-                var error = errorObj[body[self.options.errorCodeField]] || errorObj["*"];
+                var error = errorObj[body[self.defaults.errorCodeField]] || errorObj["*"];
 
                 if (error !== undefined) {
                     if (error instanceof Error) return next(error);
