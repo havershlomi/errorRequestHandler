@@ -1,0 +1,22 @@
+{
+  "name": "errorRequestHandler",
+  "description": "npm help handdle errors using request",
+  "author": {
+    "name": "Shlomi haver",
+    "email": "havershlomi@gmail.com"
+  },
+  "main":"index.js",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/havershlomi/errorRequestHandler.git"
+  },
+  "dependencies": {
+    "extend": "^2.0.0",
+    "request": "^2.42.0"
+  },
+  "engines": {
+    "node": ">0.10.0"
+  },
+  "readme": "ERROR: No README data found!"
+}
