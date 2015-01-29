@@ -29,7 +29,7 @@ function errorBaseRequest(uri, options, errorObj, callback) {
                 next();
             }
         },
-        baseRequest = request.defaults({});
+        baseRequest = request.defaults(defaults.requestOptions);
     var self = this;
 
     return baseRequest(uri, options,
@@ -38,7 +38,7 @@ function errorBaseRequest(uri, options, errorObj, callback) {
             async.series([function (next) {
                 self.defaults.generalErrorHandler(response, body, next);
             }, function (next) {
-                var error = errorObj[body[self.defaults.errorCodeField]] || errorObj["*"];
+                var error = errorObj[body[defaults.errorCodeField]] || errorObj["*"];
 
                 if (error !== undefined) {
                     if (error instanceof Error) return next(error);
