@@ -1,11 +1,8 @@
 {
-  "name": "errorRequestHandler",
+  "name": "error-request-handler",
   "description": "npm help handdle errors using request",
-  "author": {
-    "name": "Shlomi haver",
-    "email": "havershlomi@gmail.com"
-  },
-  "main":"index.js",
+  "author": "Shlomi haver <havershlomi@gmail.com>",
+  "main": "index.js",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -18,5 +15,26 @@
   "engines": {
     "node": ">0.10.0"
   },
-  "readme": "ERROR: No README data found!"
+  "bugs": {
+    "url": "https://github.com/havershlomi/errorRequestHandler/issues"
+  },
+  "homepage": "https://github.com/havershlomi/errorRequestHandler",
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "request",
+    "error",
+    "errors",
+    "errorHandler"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+    }
+  ]
 }
