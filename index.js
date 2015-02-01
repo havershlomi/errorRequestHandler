@@ -32,7 +32,7 @@ function errorBaseRequest(uri, options, errorObj, callback) {
         baseRequest = request.defaults(defaults.requestOptions);
     var self = this;
 
-    return new baseRequest;
+    return new baseRequest.BaseRequest(defaults);
 };
 
 errorBaseRequest.defaults = function (options) {
