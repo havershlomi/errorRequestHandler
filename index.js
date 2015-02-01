@@ -2,7 +2,7 @@
 
 var request = require("request"),
     extend = require("extend"),
-    async = require("async");
+    baseRequest = require("./lib/baseRequest");
 //request options need to Accept json
 var defaults = {
     requestOptions: {
@@ -32,28 +32,7 @@ function errorBaseRequest(uri, options, errorObj, callback) {
         baseRequest = request.defaults(defaults.requestOptions);
     var self = this;
 
-    return baseRequest(uri, options,
-        function (err, response, body) {
-            if (err) return callback(err);
-            async.series([function (next) {
-                self.defaults.generalErrorHandler(response, body, next);
-            }, function (next) {
-                var error = errorObj[body[defaults.errorCodeField]] || errorObj["*"];
-
-                if (error !== undefined) {
-                    if (error instanceof Error) return next(error);
-                    if (error instanceof Function) return error(response, body, function (err) {
-                        next(err, response, body);
-                    });
-                } else {
-                    return next();
-                }
-
-            }], function (err) {
-                if (err) return callback(err);
-                callback(null, response, body);
-            });
-        });
+    return new baseRequest;
 };
 
 errorBaseRequest.defaults = function (options) {
@@ -62,5 +41,7 @@ errorBaseRequest.defaults = function (options) {
     if (options.generalErrorHandler === undefined && !(options.generalErrorHandler instanceof Function)) throw new Error("generalErrorHandler must be a function");
     this.baseRequest = request.defaults(this.defaults.requestOptions || {});
 };
+
+
 
 module.exports = errorBaseRequest;
