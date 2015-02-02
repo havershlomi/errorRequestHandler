@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/havershlomi/errorRequestHandler",
   "devDependencies": {
+    "express": "^4.11.2",
     "mocha": "^2.1.0"
   },
   "scripts": {
@@ -37,5 +38,6 @@
       "type": "MIT",
       "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
     }
-  ],"readme": "ERROR: No README data found!"
+  ],
+  "readme": "ERROR: No README data found!"
 }
