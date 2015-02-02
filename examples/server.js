@@ -29,7 +29,7 @@ app.get("/error", function (req, res, next) {
 
 //var customRequest = errorHandlerRequest.defaults({
 //    generalErrorHandler: function (response, body, next) {
-//        if (response.statusCode === 200) return next(null, response, body);
+//        if (response.statusCode === 200) return next();
 //        if (response.statusCode === 404) return next(new Error("page not found"));
 //        if (response.statusCode === 401) return next(new Error("Access denied"));
 //        if (response.statusCode === 400 && body.errorCode === 0) return next(new Error("Unknown user error occur", 1));
